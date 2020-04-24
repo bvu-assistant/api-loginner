@@ -1,12 +1,28 @@
 
+const Page = require('../student/pages/collection/Page');
+const Student = require('../student/student');
 
-const confirm_img_gen = require('../self_modules/confirm-image-generator');
-const md5_decoder = require('../self_modules/md5-decoder');
 
-(async()=>
+(async ()=>
 {
-    let confirmImg = await confirm_img_gen.getConfirmImage('yb4htnc2vwznzmiaoco3ikox');
-    let md5_decoded = await md5_decoder.reverse(confirmImg.md5);
+    try
+    {
+        let s = new Student('18033747', 'vw2yDZ80');
+        let loggedin = await s.logIn();
+    
 
-    console.log(confirmImg, md5_decoded);
+        if (loggedin === true)
+        {
+            console.log(loggedin);
+            
+            // let profileHTML = await s.getRawHTML(s.pages.HoSoSinhVien);
+            // console.log(profileHTML);
+        }
+
+        
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
 })();

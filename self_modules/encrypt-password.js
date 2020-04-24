@@ -3,16 +3,14 @@ const CryptoJS = require('crypto-js');
 const salt = require('./salt');
 
 
-async function EncryptData(studentID, password, sessionID)
+async function EncryptData(studentID, password, sessionId)
 {
     try
     {
         let stream = await new Promise( async(resolve, reject) =>
         {
             var _0xd2e2x5 = CryptoJS.enc.Hex.parse('e84ad660c4721ae0e84ad660c4721ae0');
-            var _0xd2e2x6 = CryptoJS.enc.Utf8.parse(await GetPrivateKey(studentID, sessionID));
-            // var _0xd2e2x6 = CryptoJS.enc.Utf8.parse(salt_key);
-
+            var _0xd2e2x6 = CryptoJS.enc.Utf8.parse(await GetPrivateKey(studentID, sessionId));
             var _0xd2e2x7 = CryptoJS.enc.Utf8.parse('CryptographyPMT-EMS');
 
 
@@ -44,9 +42,9 @@ async function EncryptData(studentID, password, sessionID)
 }
 
 
-async function GetPrivateKey(_0xd2e2xc, sessionID)
+async function GetPrivateKey(_0xd2e2xc, sessionId)
 {
-    let salt_key = await salt.getSalt(_0xd2e2xc, sessionID);
+    let salt_key = await salt.getPrivateKey(_0xd2e2xc, sessionId);
     return salt_key;
 }
 

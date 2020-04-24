@@ -1,7 +1,5 @@
-module.exports = { getSalt: getPrivateKey }
+module.exports = { getPrivateKey }
 const request = require('request');
-const axios = require('axios').default;
-const https = require('https');
 
 
 
@@ -18,7 +16,7 @@ function getPrivateKey(studentID, sessionId)
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0',
                 'Content-Type': 'application/json',
                 'Cookie': `ASP.NET_SessionId=${sessionId}`,
-                'X-AjaxPro-Method': 'GetPrivateKey',
+                'X-AjaxPro-Method': 'GetPrivateKey'
             },
             json:
             {
@@ -27,12 +25,7 @@ function getPrivateKey(studentID, sessionId)
         },
         (err, res, body) =>
         {
-            // console.log('Request headers:', res.request.headers);
-            // console.log('Repsonse headers:', res.headers);
-            // console.log('Body:', body);
-
             const salt = body.split(';')[0].split('"').join('');
-            // console.log('Salt key:', salt);
             return resolve(salt);
         });
     });

@@ -1,6 +1,6 @@
 module.exports = { getConfirmImage }
-const axios = require('axios').default;
 const request = require('request');
+
 
 
 function getConfirmImage(sessionID = undefined)
@@ -28,14 +28,14 @@ function getConfirmImage(sessionID = undefined)
             else
             {
                 const jBody = JSON.parse(body.split(';')[0]);   //  ép kiểu sang json
-                const md5 = jBody[1];   //  lấy mã xác nhận md5 từ body response
+                const raw_md5 = jBody[1];   //  lấy mã xác nhận md5 từ body response
 
 
                 //  tìm sessionId
                 let sessionId = sessionID;
                 if (sessionId === undefined)
                 {
-                    sessionId = sessionID || res.rawHeaders.find((elem) =>
+                    sessionId = res.rawHeaders.find((elem) =>
                     {
                         return elem.indexOf('NET_SessionId') !== -1;
                     });
@@ -45,7 +45,7 @@ function getConfirmImage(sessionID = undefined)
 
 
                 //  trả về Object
-                let response = {md5: md5, sessionId: sessionId};
+                let response = {rawMD5: raw_md5, sessionId: sessionId};
                 return resolve(response);
             }
         });
@@ -57,7 +57,7 @@ function getConfirmImage(sessionID = undefined)
 // {
 //     try
 //     {
-//         console.log(await getConfirmImage('a40bmq2zb5dtglbipossd1at'));
+//         console.log(await getConfirmImage());
 //     }
 //     catch (error)
 //     {
