@@ -1,11 +1,13 @@
 const Page = require('./Page');
+const link = 'https://sinhvien.bvu.edu.vn/CongNoSinhVien.aspx';
 
 
 class CongNoSinhVien extends Page
 {
-    #link = 'https://sinhvien.bvu.edu.vn/CongNoSinhVien.aspx';
-
-    
+    static getRawHTML(sessionId)
+    {
+        return super.getRawHTML(link, sessionId);
+    }
 }
 
 

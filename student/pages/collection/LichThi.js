@@ -1,11 +1,13 @@
 const Page = require('./Page');
+const link = 'https://sinhvien.bvu.edu.vn/XemLichThi.aspx';
 
 
 class LichThi extends Page
 {
-    #link = 'https://sinhvien.bvu.edu.vn/XemLichThi.aspx';
-
-    
+    static getRawHTML(sessionId)
+    {
+        return super.getRawHTML(link, sessionId);
+    }
 }
 
 

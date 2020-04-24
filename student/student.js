@@ -21,6 +21,7 @@ class Student
     async logIn()   //  returns undefined if error
     {
         let loginResponse = await logInner.login(this.id, this.password);
+        console.log(loginResponse);
 
 
         if (loginResponse)
@@ -33,7 +34,6 @@ class Student
         }
 
 
-        console.log(loginResponse);
         return false
     }
 

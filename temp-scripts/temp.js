@@ -13,10 +13,8 @@ const Student = require('../student/student');
 
         if (loggedin === true)
         {
-            console.log(loggedin);
-            
-            // let profileHTML = await s.getRawHTML(s.pages.HoSoSinhVien);
-            // console.log(profileHTML);
+            let profileHTML = await s.pages.DiemRenLuyen.getRawHTML(s.sessionId);
+            console.log(profileHTML);
         }
 
         
