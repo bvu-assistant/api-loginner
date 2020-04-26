@@ -11,12 +11,13 @@ const Student = require('../student/student');
         let loggedin = await s.logIn();
     
 
-        if (loggedin === true)
-        {
-            let profileHTML = await s.pages.DiemRenLuyen.getRawHTML(s.sessionId);
-            console.log(profileHTML);
-        }
+        // if (loggedin === true)
+        // {
+        //     // let profileHTML = await s.pages.ThongTinDiemDanh.getRawHTML(s.sessionId);
+        //     // console.log(profileHTML);
+        // }
 
+        console.log(loggedin);
         
     }
     catch(err)

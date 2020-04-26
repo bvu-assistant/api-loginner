@@ -10,8 +10,17 @@ async function EncryptData(studentID, password, sessionId)
         let stream = await new Promise( async(resolve, reject) =>
         {
             var _0xd2e2x5 = CryptoJS.enc.Hex.parse('e84ad660c4721ae0e84ad660c4721ae0');
+            // console.log('_0xd2e2x5:', _0xd2e2x5);
+            
+
             var _0xd2e2x6 = CryptoJS.enc.Utf8.parse(await GetPrivateKey(studentID, sessionId));
+            // console.log('_0xd2e2x6:', _0xd2e2x6);
+            
+
+
             var _0xd2e2x7 = CryptoJS.enc.Utf8.parse('CryptographyPMT-EMS');
+            // console.log('_0xd2e2x7:', _0xd2e2x7);
+            
 
 
             var _0xd2e2x8 = CryptoJS.PBKDF2(_0xd2e2x6.toString(CryptoJS.enc.Utf8), _0xd2e2x7, 

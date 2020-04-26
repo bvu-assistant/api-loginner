@@ -9,19 +9,19 @@ const cheerio = require('cheerio');
 
 class Student
 {
-    constructor(id, password)
+    constructor(id, password, sessionId = undefined)
     {
         this.id = id;
         this.password = password;
-        this.sessionId = undefined;
+        this.sessionId = sessionId;
         this.pages = require('./pages/collection');
     }
 
 
     async logIn()   //  returns undefined if error
     {
-        let loginResponse = await logInner.login(this.id, this.password);
-        console.log(loginResponse);
+        let loginResponse = await logInner.login(this.id, this.password, this.sessionId);
+        // console.log(loginResponse);
 
 
         if (loginResponse)
@@ -29,12 +29,11 @@ class Student
             if (loginResponse.isLoginSuccess)
             {
                 this.sessionId = loginResponse.sessionId;
-                return true;
             }
         }
 
 
-        return false
+        return loginResponse;
     }
 
     logOut()
