@@ -17,23 +17,11 @@ app.listen(PORT, () =>
 
 
 
-app.get('/login', async(req, res) =>
+const loginRoutes = require('./routes/login');
+app.use('/login', loginRoutes);
+
+
+app.get('/', (req, res) =>
 {
-    const studentID = req.query.id;
-    const password = req.query.pass;
-    const sessionId = req.query.sessionId;
-
-    if (studentID && password)
-    {
-        const Student = require('./student/student');
-        let student = new Student(studentID, password, sessionId);
-
-
-        // console.log(studentID, password);
-        res.status(200).send(await student.logIn());
-        return;
-    }
-
-
-    res.status(404).send('Wrong param.');
+    res.status(200).send('Server running Oke.');
 });

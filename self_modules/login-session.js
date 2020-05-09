@@ -1,5 +1,5 @@
 const md5_decoder = require('./md5-decoder');
-const confirmImg_generator = require('./confirm-image-generator');
+const confirmImg_generator = require('./confirmIMG-generator');
 
 
 class LoginSession
