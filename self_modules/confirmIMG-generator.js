@@ -33,13 +33,13 @@ function getConfirmImage(sessionID = undefined)
 
                 //  tìm sessionId
                 let sessionId = sessionID;
-                if (sessionId === undefined)
+                let isNewSessionId = res.rawHeaders.find((elem) =>
                 {
-                    sessionId = res.rawHeaders.find((elem) =>
-                    {
-                        return elem.indexOf('NET_SessionId') !== -1;
-                    });
-                    sessionId = sessionId.split(';')[0];
+                    return elem.indexOf('NET_SessionId') !== -1;
+                });
+                if (isNewSessionId)
+                {
+                    sessionId = isNewSessionId.split(';')[0];
                     sessionId = sessionId.split('=')[1];
                 }
 
@@ -57,7 +57,7 @@ function getConfirmImage(sessionID = undefined)
 // {
 //     try
 //     {
-//         console.log(await getConfirmImage());
+//         console.log(await getConfirmImage('tvhijlwytlrklo13rydu4wv2'));
 //     }
 //     catch (error)
 //     {

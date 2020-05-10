@@ -7,7 +7,7 @@ class LoginSession
     constructor(sessionId = undefined)
     {
         this.decodedMD5 = undefined;
-        this.sessionId = undefined;
+        this.sessionId = sessionId;
         this.rawMD5 = undefined;
 
 
