@@ -20,6 +20,7 @@ class Student
 
     async logIn()   //  returns undefined if error
     {
+        console.log('Loginning...');
         let loginResponse = await logInner.login(this.id, this.password, this.sessionId);
         // console.log(loginResponse);
 

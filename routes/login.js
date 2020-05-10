@@ -35,6 +35,21 @@ router.post('/', async(req, res) =>
     res.status(404).send('Wrong param.');
 });
 
+router.post('/raw', async(req, res) =>
+{
+    console.log(req.body);
+    
+    const json = req.body;
+    const id = json.id;
+    const pass = json.pass;
+    const ssid = json.ssid;
+
+
+    const Student = require('../student/student');
+    const s = new Student(id, pass, ssid);
+    console.log(s);
+    res.status(200).send(await s.logIn());
+});
 
 
 function decryptToken(token)
