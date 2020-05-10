@@ -9,7 +9,7 @@ const cheerio = require('cheerio');
 
 class Student
 {
-    constructor(id, password, sessionId = undefined)
+    constructor({id, password, sessionId = undefined})
     {
         this.id = id;
         this.password = password;

@@ -19,6 +19,8 @@ app.listen(PORT, () =>
 
 const loginRoutes = require('./routes/login');
 app.use('/login', loginRoutes);
+const fetchRoutes = require('./routes/fetch');
+app.use('/fetch', fetchRoutes);
 
 
 app.get('/', (req, res) =>

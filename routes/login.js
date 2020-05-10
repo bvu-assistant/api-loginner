@@ -23,10 +23,10 @@ router.post('/', async(req, res) =>
 
         const id = splitted[0];
         const pass = splitted[1];
-        const sessionId = splitted[2] === 'null'? undefined:splitted[2];
+        const ssid = splitted[2] === 'null'? undefined:splitted[2];
 
         const Student = require('../student/student');
-        const s = new Student(id, pass, sessionId);
+        const s = new Student({id: id, password: pass, sessionId: ssid});
         res.status(200).send(await s.logIn());
         return;
     }
@@ -46,7 +46,7 @@ router.post('/raw', async(req, res) =>
 
 
     const Student = require('../student/student');
-    const s = new Student(id, pass, ssid);
+    const s = new Student({id: id, password: pass, sessionId: ssid});
     console.log(s);
     res.status(200).send(await s.logIn());
 });
