@@ -8,6 +8,11 @@ class CongNoSinhVien extends Page
     {
         return super.getRawHTML(link, sessionId);
     }
+
+    static async getCongNo(ssid) {
+        const liabilityView = require('../../liability-viewer');
+        return liabilityView.getLiability(link, ssid);
+    }
 }
 
 

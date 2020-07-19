@@ -4,15 +4,16 @@ const logger = require('morgan');
 const app = express();
 require('dotenv/config');
 
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+
 const PORT = process.env.PORT;
 app.listen(PORT, () =>
 {
-    console.log(`BVU Loginner server listening on port: ${PORT}.`);
+    console.log(`\n\nBVU Loginner server listening on port: ${PORT}.`);
+    console.log('Open browser on: http://localhost:' + PORT);
 });
 
 
@@ -34,3 +35,14 @@ app.get('/', (req, res) =>
 {
     res.status(200).send('Server running Oke.');
 });
+
+
+
+
+// (async function() {
+
+//     let ctk = require('./student/pages/collection/ChuongTrinhKhung');
+//     let res = await ctk.getChuongTrinhKhung('dqymcifrlt51l40fngfajtyl');
+
+//     console.log(JSON.stringify(res));
+// })();

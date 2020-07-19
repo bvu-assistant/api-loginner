@@ -17,13 +17,13 @@ class HoSoSinhVien extends Page
         {
             await this.getRawHTML(sessionId)
                 .catch(err => {
-                    return resolve(undefined);
+                    return resolve('null');
                 })
                 .then(html =>
                     {
                         if (html === undefined)
                         {
-                            return resolve(undefined);
+                            return resolve('null');
                         }
 
                         const $ = cheerio.load(html);
@@ -33,7 +33,7 @@ class HoSoSinhVien extends Page
                         profile.personalProfile = self.getPersonalProfile($);
                         profile.familyProfile = self.getFamilyProfile($);
 
-                        return resolve(profile);
+                        return resolve(profile.name === ''? 'null': profile);
                     });
         });
     }

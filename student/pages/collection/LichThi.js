@@ -8,6 +8,11 @@ class LichThi extends Page
     {
         return super.getRawHTML(link, sessionId);
     }
+
+    static async getLichThi(ssid) {
+        const testView = require('../../testSchedule-viewer');
+        return testView.getTestSchedules(link, ssid);
+    }
 }
 
 

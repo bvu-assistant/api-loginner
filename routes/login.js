@@ -37,7 +37,7 @@ router.post('/', async(req, res) =>
 
 router.post('/raw', async(req, res) =>
 {
-    console.log(req.body);
+    console.log('\n\nNew login requiring:', req.body);
     
     const json = req.body;
     const id = json.id;
@@ -47,8 +47,10 @@ router.post('/raw', async(req, res) =>
 
     const Student = require('../student/student');
     const s = new Student({id: id, password: pass, sessionId: ssid});
-    console.log(s);
-    res.status(200).send(await s.logIn());
+
+    let loginResult = await s.logIn();
+    console.log(loginResult);
+    res.status(200).send(loginResult);
 });
 
 

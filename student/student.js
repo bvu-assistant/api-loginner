@@ -25,7 +25,7 @@ class Student
         // console.log(loginResponse);
 
 
-        if (loginResponse)
+        if (loginResponse)  //  return undefined if error
         {
             if (loginResponse.isLoginSuccess)
             {

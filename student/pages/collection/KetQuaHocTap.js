@@ -8,6 +8,11 @@ class KetQuaHocTap extends Page
     {
         return super.getRawHTML(link, sessionId);
     }
+
+    static async getMarks(ssid) {
+        const markView = require('../../mark_viewer');
+        return markView.getMarks(link, ssid);
+    }
 }
 
 
