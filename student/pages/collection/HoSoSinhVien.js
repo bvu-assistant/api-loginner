@@ -26,8 +26,11 @@ class HoSoSinhVien extends Page
                             return resolve('null');
                         }
 
+                        
                         const $ = cheerio.load(html);
+
                         let profile = {};
+                        profile.id = self.getId($);
                         profile.name = self.getName($);
                         profile.learningStatus = self.getLearningStatus($);
                         profile.personalProfile = self.getPersonalProfile($);
@@ -42,6 +45,11 @@ class HoSoSinhVien extends Page
     static getName($)
     {
         return $('#ctl00_ucRight1_Span2').text().replace(/(  )*/gm, '').replace(/\n/gm, '');
+    }
+
+    static getId($) {
+        const msv = $('.ma-sinhvien').text().match(/\d{8}/);
+        return msv? msv[0]: null;
     }
 
     static getLearningStatus($$)
