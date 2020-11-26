@@ -56,7 +56,6 @@ router.get('/:method', async(req, res) => {
                 break;
             }
 
-
             case 'PhieuThu': {
                 result = await s.pages.DanhSachPhieuThu.getPhieuThu(s.sessionId);
                 break;

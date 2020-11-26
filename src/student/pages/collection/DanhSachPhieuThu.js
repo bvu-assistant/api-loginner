@@ -69,7 +69,7 @@ class DanhSachPhieuThu extends Page
                 });
             });
 
-            console.log('Records:', records);
+            // console.log('Records:', records);
             return resolve(records);
         });
     }

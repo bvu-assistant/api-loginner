@@ -6,7 +6,7 @@
   "license": "ISC",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon src/server.js"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -20,5 +20,12 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.3",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "ts-loader": "^8.0.7",
+    "typescript": "^4.0.5",
+    "webpack": "^5.3.2",
+    "webpack-cli": "^4.1.0",
+    "webpack-node-externals": "^2.5.2"
   }
 }
