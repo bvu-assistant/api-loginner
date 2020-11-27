@@ -27,7 +27,7 @@ async function getThisWeekSchedules(url, ssid)
             console.log('Selected term: ', term);
 
 
-            let schedules = {};
+            let schedules = [];
             $('#detailTbl > tbody > tr:not(:first-child)').each(async(trIndex, tr) =>
             {
                 let dateOfWeek = Math.floor(trIndex / 3);   //  ngày trong một tuần
@@ -36,11 +36,12 @@ async function getThisWeekSchedules(url, ssid)
 
                 switch (dateSectionIndex) {
                     case 0: {
-                        schedules[dateOfWeek] = {
+                        schedules.push({
+                            dayIndex: dateOfWeek,
                             morning: [],
                             afternoon: [],
                             evening: []
-                        }
+                        });
 
                         schedules[dateOfWeek].morning = await getSchedulesInSectionOfDate(tr);
                         break;
@@ -136,7 +137,7 @@ async function getThisWeekScheduleHTML(url, sessionId)
                 {
                     if (err || (res.statusCode !== 200))
                     {
-                        console.log(`[testSchedule-viewer.js:93] — Error:`, err);
+                        console.log(`[normal-schedule-viewer.js:139] — Error:`, err);
                         return reject(err);
                     }
                     else
@@ -152,6 +153,6 @@ async function getThisWeekScheduleHTML(url, sessionId)
     }
     catch (err)
     {
-        console.log(`[testSchedule-viewer.js] — Error:`, err);
+        console.log(`[normal-schedule-viewer.js] — Error:`, err);
     }
 }
